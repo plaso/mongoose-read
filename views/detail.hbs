@@ -1,3 +1,11 @@
 <h1>{{post.title}}</h1>
 
 <p>{{post.body}}</p>
+
+<a href="/posts/{{post.id}}/edit" class="btn btn-primary mb-3">Edit post</a>
+
+<form action="/posts/{{post.id}}/delete" method="POST">
+  <button type="submit" class="btn btn-danger mb-3">
+    Delete Post
+  </button>
+</form>

@@ -1,0 +1,13 @@
+<h2 class="mb-3 mt-3">{{#if id}}Edit{{else}}Create{{/if}} a Post</h2>
+
+<form action="{{#if id}}/posts/{{id}}/edit{{else}}/posts/create{{/if}}" method="POST">
+  <div class="mb-3">
+    <label for="title" class="form-label">Title</label>
+    <input class="form-control" id="title" name="title" value="{{title}}"/>
+  </div>
+  <div class="mb-3">
+    <label for="body" class="form-label">Body</label>
+    <textarea class="form-control" id="body" name="body">{{body}}</textarea>
+  </div>
+  <button type="submit" class="btn btn-primary">{{#if id}}Edit{{else}}Create{{/if}} Post</button>
+</form>
