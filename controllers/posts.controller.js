@@ -1,4 +1,5 @@
 const Post = require("../models/Post.model");
+const Comment = require("../models/Comment.model");
 
 module.exports.listPosts = (req, res, next) => {
   Post.find()
@@ -10,7 +11,10 @@ module.exports.listPosts = (req, res, next) => {
 
 module.exports.getPost = (req, res, next) => {
   Post.findById(req.params.id)
-    .then((post) => res.render("detail", { post: post }))
+    .populate("comments")
+    .then((post) => {
+      res.render("detail", { post: post });
+    })
     .catch((e) => console.error(e));
 };
 

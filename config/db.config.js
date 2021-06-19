@@ -1,9 +1,11 @@
+require("dotenv").config();
 const mongoose = require('mongoose');
 
 const DB_NAME = 'mongoose-read-example';
+const URI = process.env.MONGODB_URI || 'mongodb://localhost:27017';
 
 mongoose
-  .connect(`mongodb://localhost:27017/${DB_NAME}`, {
+  .connect(`${URI}/${DB_NAME}`, {
     useCreateIndex: true,
     useNewUrlParser: true,
     useUnifiedTopology: true

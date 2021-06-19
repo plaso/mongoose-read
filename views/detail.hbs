@@ -9,3 +9,32 @@
     Delete Post
   </button>
 </form>
+
+<h2>Comments</h2>
+{{#if post.comments}}
+  {{#each post.comments as |comment|}}
+    <p>"{{comment.body}}" -
+      {{comment.author}}
+      <form action="/comments/{{comment.id}}/delete" method="POST">
+        <button type="submit" class="btn btn-danger mb-3">
+          Delete Comment
+        </button>
+      </form>
+    </p>
+  {{/each}}
+{{else}}
+  No comments :(
+{{/if}}
+
+<h2 class="mt-3">Add a comment</h2>
+<form action="/posts/{{post.id}}/comments" method="POST">
+  <div class="mb-3">
+    <label for="author" class="form-label">Author</label>
+    <input class="form-control" id="author" name="author" />
+  </div>
+  <div class="mb-3">
+    <label for="body" class="form-label">Body</label>
+    <textarea class="form-control" id="body" name="body"></textarea>
+  </div>
+  <button type="submit" class="btn btn-primary">Add comment</button>
+</form>

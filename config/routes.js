@@ -1,6 +1,8 @@
 const router = require('express').Router();
 const postsController = require('../controllers/posts.controller')
+const commentsController = require('../controllers/comments.controller')
 
+// Posts
 router.get('/', postsController.listPosts);
 // Create
 router.get('/posts/create', postsController.createPost); // Shows Post creation form
@@ -13,5 +15,9 @@ router.post('/posts/:id/edit', postsController.doEditPost); //  Receives Post fo
 // Delete
 router.post('/posts/:id/delete', postsController.doDeletePost); //  Deletes Post 
 
+
+// Comments
+router.post('/posts/:postid/comments', commentsController.doCreateComment);
+router.post('/comments/:id/delete', commentsController.deleteComment);
 
 module.exports = router;
